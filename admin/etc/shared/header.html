@@ -1,0 +1,19 @@
+<div class="h-align v-items-center h-align-sb header">
+  <!-- ロゴとタイトル -->
+  <div class="h-align v-items-center pl40">
+    <!-- ロゴ -->
+    <div class="">
+      <a href="<?php echo $thisPage->top_path; ?>/">
+      </a>
+    </div>
+    <!-- タイトル -->
+    <div class="header-title pl16">
+      <a href="<?php echo $thisPage->top_path; ?>/">ZENT管理画面</a>
+    </div>
+  </div>
+  <!-- ユーザ名 -->
+  <div class="h-align logout-container v-items-center ml-20">
+    <div class="login-user"><?php echo $_auth->getUserName(); ?>さん</div>
+    <div><a class="logout ws-nowrap" href="<?php echo $thisPage->top_path; ?>/?logout=1">ログアウト</a></div>
+  </div>
+</div>

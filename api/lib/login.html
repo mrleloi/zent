@@ -1,0 +1,73 @@
+<?php
+	$message = $this->getStatusMessage(); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <!-- //tiêu đề header của tab khi mở trang web -->
+  <head>
+		<!-- //sử dụng font,Content Type mô tả khai báo mã hiển thị ngôn ngữ -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<!-- //cài ngôn ngữ sử dụng là css,html5 có thể bỏ qua. -->
+    <meta http-equiv="Content-Style-Type" content="text/css" />
+		<!-- //cài ngôn ngữ sử dụng là javascript,html5 có thể bỏ qua. -->
+    <meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<!-- //Thiết định khung nhìn để trang web dễ nhìn trên tất cả các thiết bị. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- //title ở tab trên trình duyệt -->
+    <title>ログイン - ZENT管理画面</title>
+		<!-- //định dạng style của trang web được cấu hình trong css. -->
+    <link rel="stylesheet" href="<?php echo $LOGIN_CSS ?>" type="text/css" />
+    <!-- //icon trên các thiết bị của apple nhằm mục đích tạo thương hiệu cho trang web. -->
+    <link rel="apple-touch-icon" sizes="180x180" href="<?php echo $thisPage->shared_path; ?>/images/apple-touch-icon.png">
+		<!-- //tạo tệp kê khai để trình duyệt có thể đọc được nội dung web.nó nằm ở admin\etc\shared\site.webmanifest -->
+    <link rel="manifest" href="<?php echo $thisPage->shared_path; ?>/site.webmanifest">
+		<!-- //tạo một lớp mặt nạ cho icon -->
+    <link rel="mask-icon" href="<?php echo $thisPage->shared_path; ?>/images/safari-pinned-tab.svg" color="#ea5e00">
+    <!-- <link rel="icon" type="image/x-icon" href="<?php echo $thisPage->shared_path; ?>/images/favicon.ico"> -->
+		<!-- //hiển thị icon trên tab của trình duyệt -->
+		<link rel="icon" type="image/icon" href="<?php echo $thisPage->shared_path; ?>/images/favicon1.ico">
+		<!-- //màu sắc icon khi bị gim ở thanh tasbar window. -->
+    <meta name="msapplication-TileColor" content="#ea5e00">
+		<!-- //thông số màu sác dành cho chorme trên android. -->
+    <meta name="theme-color" content="#ffffff">
+
+  </head>
+
+  <body>
+		<!-- //header của nội dung trang web -->
+    <header class="header">
+      <p>
+        <a href="<?php echo $thisPage->top_path; ?>/">
+        </a>
+      </p>
+      <p class="header-title pl16">
+        <a href="<?php echo $thisPage->top_path; ?>/">
+           ZENT管理画面
+        </a>
+      </p>
+    </header>
+<!-- //form hiển thị trên trang web với id,pass,và button login -->
+    <div id="login">
+			<!-- //action="" thì trang sẽ được điều hướng về index.html hoặc index.php -->
+      <form action="" method="post" name="lform">
+        <div class="id_area">
+          <label>ID:</label>
+          <input type="text" class="send id" name="login_id" />
+        </div>
+        <div class="pw_area">
+          <label>パスワード:</label>
+          <input type="password" class="send pw" name="login_pwd" />
+        </div>
+        <?php if($message){ ?>
+        <div class="error_area">
+          <p class="err"><?php echo($message); ?></p>
+        </div>
+        <?php } ?>
+
+        <button class="login-btn" name="login">ログイン</button>
+      </form>
+    </div>
+<!-- //phần cuối của nội dung trang web -->
+    <footer id="footer">
+    </footer>
+  </body>
+</html>

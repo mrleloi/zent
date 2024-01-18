@@ -1,0 +1,294 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+<!-- <script src="tzSelect/jquery.tzSelect.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="<?php echo  $thisPage->shared_path; ?>/css/jquery.datetimepicker.css"/>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.datetimepicker.full.min.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/input-autogrow.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/input-autogrow.min.js"></script>
+
+<a class="adminOperationBtn return-to-list-btn ml-60" href="<?php echo $thisPage->top_path; ?>/apl_video/">
+  <img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" />
+  <span class="ml-15">一覧に戻る</span>
+</a>
+
+<div class="h-align v-items-center ml-60 mt-36">
+  <div class="form-title-arrow"></div>
+  <div class="form-title">動画<?php echo $thisForm->get('FORM_TITLE') ?></div>
+</div>
+
+<?php if (!empty($thisForm->_message)) { ?>
+  <p class="err"><?php echo($thisForm->_message); ?></p>
+<?php } ?>
+<?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+  <form name="<?php echo($FTAG_NAME); ?>" action="./?modify" method="POST" enctype="multipart/form-data">
+  <?php } ?>
+  <?php if (!isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+    <form name="<?php echo($FTAG_NAME); ?>" action="./" method="POST" enctype="multipart/form-data">
+    <?php } ?>
+    <input type="hidden" name="mode" value="<?php echo($mode); ?>" />
+    <input type="hidden" name="sid" value="<?php echo($sid); ?>" />
+
+    <div class="item-container mt-34 promomaterial">
+      <?php $k = 1; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <input
+          type="text"
+          style="width:15%;"
+          name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+          value="<?php echo($thisForm->getv($k)); ?>"
+          class="err-i<?php echo($thisForm->getm($k)); ?> input"
+          autocomplete="off"
+          />
+        </div>
+
+      <?php } ?>
+      <?php
+      if(!empty($thisForm->imagecnt))
+      for($i=0;$i<$thisForm->imagecnt;$i++)
+      $uppath = $_upfile->_uppath.'/';
+      ?>
+      <!-- タイトル -->
+      <?php $k = 2; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <div class="ml-15">
+            <?php
+            $r_num=1;
+            $r_k=0;
+            ?>
+            <input type="hidden" name="<?php echo $r_nm[$r_num]?>[<?php echo $r_k?>]" value="<?php echo $r_prm[$r_num][$r_k]?>" />
+            <input size="40" type="file" name="file<?php echo $r_num?>[<?php echo $r_k?>]" class="err-i<?php echo $thisForm->getm($k)?>" id="imgInp" accept="video/*" data-key="<?php echo($k);?>"/>
+            <?php if(!empty($r_prm[$r_num][$r_k])){ ?>
+              <div class="edit_input_video"><video width="320" height="240" style="object-fit: initial;display: block" id="blah" src="<?php echo $uppath.$r_prm[$r_num][$r_k]?>" alt="your video" controls autoplay/></div>
+              <?php } ?>
+              <?php if(empty($r_prm[$r_num][$r_k])){ ?>
+                <div class="edit_input_video"><video width="320" height="240" style="object-fit: initial;display: none" id="blah" alt="your video" controls autoplay/></div>
+              <?php } ?>
+            </div>
+          </div>
+        <?php } ?>
+
+
+        <!-- タイトル -->
+        <?php $k = 3; if (!empty($afconf[$k])) { ?>
+          <div class="item-row">
+            <!-- <div class="col-25"> -->
+            <div class="name-container" style="width:220px;">
+              <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+              <?php if (needv($k)) { ?>
+                <div class="required">※必須</div>
+              <?php } ?>
+              <div class="colon">：</div>
+            </div>
+            <textarea wrap="hard" style="width:600px;" name="af:<?php echo needv($k)?>:<?php echo $k?>" class="err-i<?php echo $thisForm->getm($k)?> textarea ml-15"><?php echo $thisForm->getv($k)?></textarea>
+          </div>
+        <?php } ?>
+
+        <?php $k = 4; if (!empty($afconf[$k])) { ?>
+          <div class="item-row">
+            <!-- <div class="col-25"> -->
+            <div class="name-container" style="width:220px;">
+              <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+              <?php if (needv($k)) { ?>
+                <div class="required">※必須</div>
+              <?php } ?>
+              <div class="colon">：</div>
+            </div>
+            <input
+            type="text"
+            style="width:5%;"
+            name="af:<?php echo needv($k)?>:<?php echo $k?>"
+            value="<?php echo $thisForm->getv($k)?>"
+            id="datetimepicker2"
+            class="w50 err-i<?php echo $thisForm->getm($k)?> input"
+            autocomplete="off"
+            >
+          </div>
+        <?php } ?>
+
+        <?php $k = 5; if (!empty($afconf[$k])) { ?>
+          <div class="item-row">
+            <!-- <div class="col-25"> -->
+            <div class="name-container" style="width:220px;">
+              <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+              <?php if (needv($k)) { ?>
+                <div class="required">※必須</div>
+              <?php } ?>
+              <div class="colon">：</div>
+            </div>
+            <div class="ml-15">
+              <?php
+              $r_num=2;
+              $r_k=1;
+              ?>
+              <input type="hidden" name="<?php echo $r_nm[$r_num]?>[<?php echo $r_k?>]" value="<?php echo $r_prm[$r_num][$r_k]?>" />
+              <input size="40" type="file" name="file<?php echo $r_num?>[<?php echo $r_k?>]" class="err-i<?php echo $thisForm->getm($k)?>" id="imgInp1" accept="image/*"/>
+              <?php if(!empty($r_prm[$r_num][$r_k])){ ?>
+                <div class="edit_input_image"><img style="display: block" id="blah1" src="<?php echo $uppath.$r_prm[$r_num][$r_k]?>" alt="your image" /></div>
+              <?php } ?>
+              <?php if(empty($r_prm[$r_num][$r_k])){ ?>
+                <div class="edit_input_image"><img style="display: none" id="blah1" alt="your image" /></div>
+              <?php } ?>
+            </div>
+          </div>
+        <?php } ?>
+        <?php $k = 6; if (!empty($afconf[$k])) { ?>
+          <div class="item-row">
+            <!-- <div class="col-25"> -->
+            <div class="name-container" style="width:220px;">
+              <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+              <?php if (needv($k)) { ?>
+                <div class="required">※必須</div>
+              <?php } ?>
+              <div class="colon">：</div>
+            </div>
+            <div class="ml-15">
+              <?php
+              $r_num=3;
+              $r_k=2;
+              ?>
+              <input type="hidden" name="<?php echo $r_nm[$r_num]?>[<?php echo $r_k?>]" value="<?php echo $r_prm[$r_num][$r_k]?>" />
+              <input size="40" type="file" name="file<?php echo $r_num?>[<?php echo $r_k?>]" class="err-i<?php echo $thisForm->getm($k)?>" id="imgInp2" accept="image/*"/>
+              <?php if(!empty($r_prm[$r_num][$r_k])){ ?>
+                <div class="edit_input_image" data-key="<?php echo($k);?>"><img style="display: block" id="blah2" src="<?php echo $uppath.$r_prm[$r_num][$r_k]?>" alt="your image" /></div>
+              <?php } ?>
+              <?php if(empty($r_prm[$r_num][$r_k])){ ?>
+                <div class="edit_input_image"><img style="display: none" id="blah2" alt="your image" /></div>
+              <?php } ?>
+            </div>
+          </div>
+        <?php } ?>
+        <?php $k = 7; if (!empty($afconf[$k])) { ?>
+          <div class="item-row">
+            <div class="name-container" style="width:220px;">
+              <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+              <?php if (needv($k)) { ?>
+                <div class="required">※必須</div>
+              <?php } ?>
+              <div class="colon">：</div>
+            </div>
+            <input
+            type="text"
+            style="width:15%;"
+            name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+            value="<?php echo($thisForm->getv($k)); ?>"
+            class="err-i<?php echo($thisForm->getm($k)); ?> input"
+            autocomplete="off"
+            />
+          </div>
+
+        <?php } ?>
+        <!-- 確認ボタン -->
+        <div class="a-center pt-80 pb-62">
+          <input
+          class="confirm-btn"
+          type="submit"
+          name="<?php echo($thisForm->get('CONFIRM_NAME')); ?>"
+          value="<?php echo($thisForm->get('CONFIRM_TITLE')); ?>"
+          onclick="removeFileinput()"
+          />
+        </div>
+      </div>
+    </form>
+
+    <?php include('caution.html'); ?>
+    <script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.datetimepicker.full.js"></script>
+    <script>
+      jQuery('#datetimepicker2').datetimepicker({
+        datepicker:false,
+        format:'H:i'
+      });
+    </script>
+    <script type="text/javascript">
+      $('input').inputAutogrow();
+      function readURL(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img1 = document.getElementById("blah");
+            img1.style.display = "block";
+            $('#blah').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+      }
+
+      function readURL2(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img1 = document.getElementById("blah2");
+            img1.style.display = "block";
+            $('#blah2').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+      }
+
+      function readURL1(input) {
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img1 = document.getElementById("blah1");
+            img1.style.display = "block";
+            $('#blah1').attr('src', e.target.result);
+          }
+
+          reader.readAsDataURL(input.files[0]); // convert to base64 string
+        }
+      }
+
+      $("#imgInp").change(function() {
+        readURL(this);
+      });
+
+      $("#imgInp1").change(function() {
+        readURL1(this);
+      });
+
+      $("#imgInp2").change(function() {
+        readURL2(this);
+      });
+
+      // jQuery.datetimepicker.setLocale('de');
+      //
+      // jQuery('#datetimepicker_regist').datetimepicker({
+      //   i18n:{
+      //     de:{
+      //       months:[
+      //       'Januar','Februar','März','April',
+      //       'Mai','Juni','Juli','August',
+      //       'September','Oktober','November','Dezember',
+      //       ],
+      //       dayOfWeek:[
+      //       "So.", "Mo", "Di", "Mi",
+      //       "Do", "Fr", "Sa.",
+      //       ]
+      //     }
+      //   },
+      //   timepicker:false,
+      //   format:'Y-m-d'
+      // });
+    </script>

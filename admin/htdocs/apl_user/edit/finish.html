@@ -1,0 +1,28 @@
+<p id="finish">
+<?php if ($mode == "del" || empty($mode)) { ?>
+<?php if ($Ret) { ?>
+    更新が完了しました。
+<?php } elseif (isset($_SESSION[$sess_key])) { ?>
+    既に更新は実行済みです。
+<?php } else { ?>
+    更新に失敗しました。
+<?php if (!empty($thisForm->_message)) { ?><p class="err"><?php echo($thisForm->_message); ?></p><?php } ?>
+<?php } ?>
+<?php } else { ?>
+<?php if ($Ret) { ?>
+    登録が完了しました。
+<?php } elseif (isset($_SESSION[$sess_key])) { ?>
+    既に登録は実行済みです。
+<?php } else { ?>
+    登録に失敗しました。
+<?php if (!empty($thisForm->_message)) { ?><p class="err"><?php echo($thisForm->_message); ?></p><?php } ?>
+<?php } ?>
+<?php } ?>
+</p>
+<!-- <label for="female"><?php echo($thisForm->getv(3)); ?></label> -->
+<!-- <?php echo($_push_notification->_device_type[$thisForm->getv($k)]); ?> -->
+<a class="adminOperationBtn return-to-list-btn ml-60 from-finish-to-list-btn" href="<?php echo $thisPage->top_path; ?>/apl_user/?>"
+><img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" /><span class="ml-15"
+    >一覧へ</span
+></a
+>

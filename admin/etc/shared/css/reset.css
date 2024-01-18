@@ -1,0 +1,128 @@
+/* reset */
+@charset"utf-8";
+
+/* --HTML-- */
+html {
+	background:#fff;
+	color:#333;
+	overflow-y:scroll;
+}
+
+/* --BODY-- */
+body {
+	font:13px/1.5 'メイリオ', Meiryo, 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'ＭＳ Ｐゴシック', sans-serif !important;
+	margin:0;
+	overflow:visible;
+	padding:0;
+}
+
+	/* for IE7 */
+	*+html body {
+	font-family:'メイリオ', 'ＭＳ Ｐゴシック';
+	font-size:90%;!important
+	}
+
+	/* for IE6 */
+	* html body {
+	font-family:"ＭＳ Ｐゴシック";
+	font-size:90%;!important
+	}
+
+/* --OTHER TAGS-- */
+a img, img {
+border:0;
+}
+
+img {
+	vertical-align: initial !important;
+}
+
+blockquote, dd, div, dl, dt,
+h1, h2, h3, h4, h5, h6,
+li, ol, p, pre, span, td, th, ul {
+margin:0;
+padding:0;
+}
+
+abbr, acronym {
+border:0;
+}
+
+address, caption, cite, code, dfn, em, th, strong, var {
+font-style:normal;
+font-weight:normal;
+}
+
+caption, th {
+text-align:left;
+}
+
+code, kbd, pre, samp, tt {
+font-family:monospace;
+line-height:100%;
+}
+
+	/* for IE7 */
+	*+html code, kbd, pre, samp, tt {
+	font-size:108%;
+	}
+
+h1, h2, h3, h4, h5, h6 {
+font-size:100%;
+font-weight:normal;
+font-family:'ヒラギノ角ゴ Pro W6', 'Hiragino Kaku Gothic Pro W6', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', sans-serif;
+}
+
+ol, ul {
+list-style:none;
+}
+
+q:before, q:after {
+content:'';
+}
+
+br {
+letter-spacing:0;
+white-space:normal;
+}
+
+/* form */
+button, fieldset, form, input, label, legend, select, textarea {
+font-family:inherit;
+font-size:100%;
+font-style:inherit;
+font-weight:inherit;
+margin:0;
+padding:0;
+vertical-align:baseline;
+}
+
+/* tables still need 'cellspacing="0"' */
+table {
+border-collapse:collapse;
+border-spacing:0;
+font-size:100%;
+}
+
+
+/*link conf*/
+
+a:link{
+	color:#047391;
+	text-decoration:underline;
+}
+
+a:visited{
+	color:#3768B7;
+	text-decoration:underline;
+}
+
+a:hover{
+	color:#FF6600;
+	text-decoration:underline;
+}
+
+a:active{
+	color:#3768B7;
+	text-decoration:underline;
+}

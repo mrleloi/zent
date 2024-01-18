@@ -1,0 +1,110 @@
+<div class="primary-nav">
+
+	<button href="#" class="hamburger open-panel nav-toggle">
+		<span class="screen-reader-text">Menu</span>
+	</button>
+
+	<nav role="navigation" class="menu">
+
+		<a href="#" class="logotype"></a>
+
+		<div class="overflow-container">
+
+			<ul class="menu-dropdown">
+
+				<li><a href="#">お知らせ管理</a><span class="icon"><i class="fa fa-bell"></i></span>
+					<label title="toggle menu" for="notifications">
+						<span class="downarrow"><i class="fa fa-caret-down"></i></span>
+					</label>
+					<input type="checkbox" class="sub-menu-checkbox" id="notifications" />
+
+					<ul class="sub-menu-dropdown">
+						<li>
+							<a href="<?php echo $thisPage->top_path; ?>/apl_push_notification/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === 'お知らせ' ? 'selected' : ''; ?>">
+								<div class="item-name">お知らせ</div>
+								<div class="admin-menu-arrow"></div>
+								<!-- <span class="admin-menu-arrow"></span> -->
+							</a>
+						</li>
+					</ul>
+				</li>
+				<?php if($_auth->isAdmin()){ ?>
+					<li class="menu-hasdropdown">
+						<a href="#">個人情報管理</a><span class="icon"><i class="fa fa-user-circle"></i></span>
+
+						<label title="toggle menu" for="Profiles">
+							<span class="downarrow"><i class="fa fa-caret-down"></i></span>
+						</label>
+						<input type="checkbox" class="sub-menu-checkbox" id="Profiles" />
+
+						<ul class="sub-menu-dropdown">
+							<li>
+								<a href="<?php echo $thisPage->top_path; ?>/apl_user_profile/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === 'user_profile' ? 'selected' : ''; ?>">
+									<div class="item-name">個人情報</div>
+									<div class="admin-menu-arrow"></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				<?php } ?>
+				<li class="menu-hasdropdown">
+					<a href="#">動画管理</a><span class="icon"><i class="fa fa-film"></i></span>
+					<label title="toggle menu" for="videos">
+						<span class="downarrow"><i class="fa fa-caret-down"></i></span>
+					</label>
+					<input type="checkbox" class="sub-menu-checkbox" id="videos" />
+
+					<ul class="sub-menu-dropdown">
+						<li>
+							<a href="<?php echo $thisPage->top_path; ?>/apl_video/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === '動画' ? 'selected' : ''; ?>">
+								<div class="item-name">動画</div>
+								<div class="admin-menu-arrow"></div>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<li class="menu-hasdropdown">
+					<a href="#">トレーニング管理</a><span class="icon"><i class="fa fa-heart"></i></span>
+					<label title="toggle menu" for="trainings">
+						<span class="downarrow"><i class="fa fa-caret-down"></i></span>
+					</label>
+					<input type="checkbox" class="sub-menu-checkbox" id="trainings" />
+
+					<ul class="sub-menu-dropdown">
+						<li>
+							<a href="<?php echo $thisPage->top_path; ?>/apl_training/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === 'トレーニング' ? 'selected' : ''; ?>">
+								<div class="item-name">トレーニング</div>
+								<div class="admin-menu-arrow"></div>
+							</a>
+						</li>
+					</ul>
+				</li>
+				<?php if($_auth->isAdmin()){ ?>
+					<li class="menu-hasdropdown">
+						<a href="#">その他</a><span class="icon"><i class="fa fa-th"></i></span>
+						<label title="toggle menu" for="others">
+							<span class="downarrow"><i class="fa fa-caret-down"></i></span>
+						</label>
+						<input type="checkbox" class="sub-menu-checkbox" id="others" />
+
+						<ul class="sub-menu-dropdown">
+							<li>
+								<a href="<?php echo $thisPage->top_path; ?>/apl_user/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === 'apl_user' ? 'selected' : ''; ?>">
+									<div class="item-name">ユーザ管理</div>
+									<div class="admin-menu-arrow"></div>
+								</a>
+								<a href="<?php echo $thisPage->top_path; ?>/apl_user1/" class="h-align h-align-sb v-items-center <?php echo $selectedmenu === 'apl_user1' ? 'selected' : ''; ?>">
+									<div class="item-name">ユーザ管理</div>
+									<div class="admin-menu-arrow"></div>
+								</a>
+							</li>
+						</ul>
+					</li>
+				<?php } ?>
+			</ul>
+
+		</div>
+
+	</nav>
+
+</div>

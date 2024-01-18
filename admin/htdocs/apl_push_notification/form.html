@@ -1,0 +1,83 @@
+<div class="adminBtnArea h-align h-align-sb v-items-center fw-wrap">
+  <div class="h-align v-items-center">
+    <div class="form-title-arrow"></div>
+    <div class="form-title">お知らせ一覧</div>
+  </div>
+  <a class="adminOperationBtn add-category-btn h-align h-align-center ws-nowrap" href="./edit/?mode=add">
+    <div class="h-align v-items-center">
+      <img class="ico-add" src="<?php echo $thisPage->shared_path; ?>/images/ico_add.svg" alt="" />
+      <span class="btn-title ml-15">新規お知らせ登録</span>
+    </div>
+  </a>
+</div>
+
+<form action="./" method="post" name="<?php echo($FTAG_NAME); ?>">
+  <input type="hidden" name="page" value="<?php echo $pageObj->getPage()?>" />
+  <input type="hidden" name="limit" value="<?php echo $pageObj->getLimit()?>" />
+  <input type="hidden" name="sort" value="<?php echo $pageObj->getSort()?>" />
+  <input type="hidden" name="order" value="<?php echo $pageObj->getOrder()?>" />
+  <input type="hidden" name="mode" value="<?php echo($mode); ?>" />
+  <?php include('pageview_upper.html'); ?>
+
+  <div class="table-container">
+    <table class="table-list aplPushNotification">
+      <tr>
+        <?php foreach($sortTitle as $tr) { ?>
+          <th>
+            <?php foreach($tr as $i=>$srow) { ?>
+              <?php if($i>=1){ print("<br>/"); } ?>
+              <?php ($srow['sort']) ? print($pageObj->sortTitle($srow['title'],$srow['key'])) : print($srow['title']) ; ?>
+            <?php } ?>
+          </th>
+        <?php } ?>
+      </tr>
+      <?php if (!empty($aplPushNotificationList)) {
+                foreach ($aplPushNotificationList as $i => $aplPushNotification) { ?>
+      <tr>
+        <td class="no" >
+          <div class="h-align-center" align="center">
+            <?php echo $aplPushNotification->sid; ?></td>
+          </div>
+        </td>
+        <td class="type">
+          <div class="h-align-center" align="center">
+            <?php echo explode("/", $aplPushNotification->type)[0]; ?></td>
+          </div>
+        </td>
+        <td class="date">
+          <div class="h-align-center" align="center">
+            <?php echo $aplPushNotification->time_delivery; ?></td>
+          </div>
+        </td>
+        <td class="title">
+          <div class="h-align-center" align="center">
+            <?php echo $aplPushNotification->title; ?></td>
+          </div>
+        </td>
+        <td class="body">
+          <div class="h-align-center" align="center">
+            <?php echo $aplPushNotification->body; ?></td>
+          </div>
+        </td>
+        <td class="text">
+          <div class="v-align v-items-center h-align-center">
+            <a class="adminTableBtn adminTableModifyBtn" href="./edit/?update&sid=<?php echo $aplPushNotification->sid; ?>">
+              <img src="<?php echo $thisPage->shared_path; ?>/images/ico_pen.svg" alt="" />
+              <span class="ml-8">変更</span>
+            </a>
+            <!-- <a class="adminTableBtn adminTableModifyBtn mt-15" href="../ca_question/?aplPushNotification_id=<?php echo $aplPushNotification->sid; ?>">
+              <span class="ml-8">設問</span>
+            </a> -->
+            <a class="adminTableBtn adminTableDeleteBtn mt-15" href="./edit/?delete&sid=<?php echo $aplPushNotification->sid; ?>">
+              <img src="<?php echo $thisPage->shared_path; ?>/images/icon_delete.svg" alt="" />
+              <span class="ml-8">削除</span>
+            </a>
+          </div>
+        </td>
+      </tr>
+      <?php }} ?>
+    </table>
+  </div>
+
+  <?php include('pageview_lower.html'); ?>
+</form>

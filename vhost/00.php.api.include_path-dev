@@ -1,0 +1,1 @@
+php_value include_path ".:/C:/xampp/htdocs/zent/api/etc:/C:/xampp/htdocs/zent/api/lib:/C:/xampp/htdocs/zent/etc:/C:/xampp/htdocs/zent/lib:/usr/share/pear7:/usr/share/php7"

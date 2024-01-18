@@ -1,0 +1,10 @@
+<?php if($pageObj->getCount()){ ?>
+
+<?php if($pageObj->getMaxpage()>1){ ?>
+<div class="page-navi">
+  <?php ($pageObj->getPagelink_back())?print($pageObj->getPagelink_back()):print(""); ?><?php print($pageObj->getPageNumberList()); ?><?php ($pageObj->getPagelink_next())?print($pageObj->getPagelink_next()):print("");
+  ?>
+</div>
+<?php } ?>
+
+<?php } ?>

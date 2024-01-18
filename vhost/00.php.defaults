@@ -1,0 +1,30 @@
+php_flag short_open_tag Off
+php_flag display_errors On
+php_value error_reporting 2039
+
+php_value mbstring.language Japanese
+php_value mbstring.internal_encoding UTF-8
+php_value mbstring.script_encoding UTF-8
+php_value mbstring.http_output UTF-8
+php_value mbstring.http_input UTF-8
+
+php_value auto_detect_line_endings on
+#php_value output_handler mb_output_handler
+php_value output_handler none
+php_flag mbstring.encoding_translation On
+php_value mbstring.detect_order auto
+php_value mbstring.substitute_character none
+php_flag magic_quotes_gpc Off
+
+php_value session.gc_maxlifetime 604800
+php_value session.cookie_lifetime 604800
+
+php_flag session.use_cookies On
+php_flag session.use_only_cookies On
+php_flag session.use_trans_sid Off
+php_value session.name cwsid
+
+php_value date.timezone 'Asia/Tokyo'
+php_value upload_max_filesize 128M
+php_value post_max_size 192M
+php_value max_execution_time 120

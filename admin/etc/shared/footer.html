@@ -1,0 +1,40 @@
+<!-- /.df_pageTop -->
+<p class="df_pageTop">
+<a href="#header">↑ページ先頭へ</a>
+</p>
+<script language="Javascript">
+<!--
+$(document).ready(function() {
+//まずトップに戻るを消しておきます。
+$(".df_pageTop").hide();
+
+//スクロールされたら
+$(window).scroll(function () {
+//100pxいったら
+if ($(this).scrollTop() > 100) {
+//トップに戻るをフェードイン
+$('.df_pageTop').fadeIn();
+//100pxいかなかったら
+} else {
+//隠す
+$('.df_pageTop').fadeOut();
+}
+});
+
+//トップに戻るをクリックしたら
+$('.df_pageTop a').click(function () {
+//スムーズに上に戻る
+$('body,html').animate({
+scrollTop: 0
+}, 0);
+return false;
+});
+});
+-->
+</script>
+<div id="footer">
+<address>
+Copyright © Canvas Corporation. All Rights Reserved.
+</address>
+</div>
+<!-- footer/ -->

@@ -1,0 +1,424 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+
+<!-- <script src="tzSelect/jquery.tzSelect.js"></script> -->
+
+<link rel="stylesheet" type="text/css" href="<?php echo  $thisPage->shared_path; ?>/css/jquery.datetimepicker.css"/>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.datetimepicker.full.min.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/input-autogrow.js"></script>
+
+<script src="<?php echo  $thisPage->shared_path; ?>/js/input-autogrow.min.js"></script>
+
+<a class="adminOperationBtn return-to-list-btn ml-60" href="<?php echo $thisPage->top_path; ?>/apl_user_profile/">
+  <img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" />
+  <span class="ml-15">一覧に戻る</span>
+</a>
+
+<div class="h-align v-items-center ml-60 mt-36">
+  <div class="form-title-arrow"></div>
+  <div class="form-title">会員<?php echo $thisForm->get('FORM_TITLE') ?></div>
+</div>
+
+<?php if (!empty($thisForm->_message)) { ?>
+  <p class="err"><?php echo($thisForm->_message); ?></p>
+<?php } ?>
+<?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+  <form name="<?php echo($FTAG_NAME); ?>" action="./?modify" method="POST" enctype="multipart/form-data">
+  <?php } ?>
+  <?php if (!isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+    <form name="<?php echo($FTAG_NAME); ?>" action="./" method="POST" enctype="multipart/form-data">
+    <?php } ?>
+    <input type="hidden" name="mode" value="<?php echo($mode); ?>" />
+    <input type="hidden" name="sid" value="<?php echo($sid); ?>" />
+
+    <div class="item-container mt-34 promomaterial">
+      <?php $k = 1; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <input
+          type="text"
+          style="width:15%;"
+          name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+          value="<?php echo($thisForm->getv($k)); ?>"
+          class="err-i<?php echo($thisForm->getm($k)); ?> input"
+          autocomplete="off"
+          />※Eメール
+        </div>
+
+      <?php } ?>
+      <!-- タイトル -->
+      <?php $k = 2; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <input
+          type="text"
+          id="input"
+          style="width:15%;"
+          name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+          class="err-i<?php echo($thisForm->getm($k)); ?> input"
+          autocomplete="off"
+          />
+          <!-- </div> -->
+        </div>
+      <?php } ?>
+
+
+      <!-- タイトル -->
+      <?php $k = 3; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <?php foreach($PermissionList as $key => $val){ ?>
+            <input type="radio" name="af:<?php echo needv($k)?>:<?php echo $k?>" id="form<?php echo $k; ?>-<?php echo $key; ?>" <?php echo cbv($k, $key);?>/>
+            <label for="form<?php echo $k; ?>-<?php echo $key; ?>" class="radio"><?php echo $val; ?></label>
+          <?php } ?>
+          <!-- </div> -->
+        </div>
+      <?php } ?>
+
+      <?php $k = 4; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <input
+          type="text"
+          id="input"
+          style="width:15%;"
+          name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+          value="<?php echo($thisForm->getv($k)); ?>"
+          class="err-i<?php echo($thisForm->getm($k)); ?> input"
+          autocomplete="off"
+          />
+          <!-- </div> -->
+        </div>
+      <?php } ?>
+
+      <?php $k = 5; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <!-- </div> -->
+          <!-- <div class="col-75"> -->
+          <input
+          type="text"
+          style="width:15%;"
+          name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+          value="<?php echo($thisForm->getv($k)); ?>"
+          class="err-i<?php echo($thisForm->getm($k)); ?> input"
+          autocomplete="off"
+          />
+          <!-- </div> -->
+        </div>
+      <?php } ?>
+      <?php
+      if(!empty($thisForm->imagecnt))
+      for($i=0;$i<$thisForm->imagecnt;$i++)
+      $uppath = $_upfile->_uppath.'/';
+      ?>
+      <?php $k = 6; if (!empty($afconf[$k])) { ?>
+        <div class="item-row">
+          <!-- <div class="col-25"> -->
+          <div class="name-container" style="width:220px;">
+            <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+            <?php if (needv($k)) { ?>
+              <div class="required">※必須</div>
+            <?php } ?>
+            <div class="colon">：</div>
+          </div>
+          <div class="ml-15">
+            <?php
+            $r_num=1;
+            $r_k=0;
+            ?>
+            <input type="hidden" name="<?php echo $r_nm[$r_num]?>[<?php echo $r_k?>]" value="<?php echo $r_prm[$r_num][$r_k]?>" />
+            <input size="40" type="file" name="file<?php echo $r_num?>[<?php echo $r_k?>]" class="err-i<?php echo $thisForm->getm($k)?>" id="imgInp"/>
+            <?php if(!empty($r_prm[$r_num][$r_k])){ ?>
+              <div class="edit_input_image"><img style="display: block" id="blah" src="<?php echo $uppath.$r_prm[$r_num][$r_k]?>" alt="your image" /></div>
+            <?php } ?>
+            <?php if(empty($r_prm[$r_num][$r_k])){ ?>
+              <div class="edit_input_image"><img style="display: none" id="blah" alt="your image" /></div>
+            <?php } ?>
+            <!-- <?php if(!empty($r_prm[$r_num][$r_k])){ ?>
+            <img id="blah" src="<?php echo $uppath.$r_prm[$r_num][$r_k]?>" alt="your image" />
+          <?php } ?> -->
+        </div>
+        <!-- </div> -->
+      </div>
+    <?php } ?>
+    <?php $k = 7; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <?php foreach($_sex as $key => $val){ ?>
+          <input type="radio" name="af:<?php echo needv($k)?>:<?php echo $k?>" id="form<?php echo $k; ?>-<?php echo $key; ?>" <?php echo cbv($k, $key);?>/>
+          <label for="form<?php echo $k; ?>-<?php echo $key; ?>" class="radio"><?php echo $val; ?></label>
+        <?php } ?>
+      </div>
+
+    <?php } ?>
+    <!-- ボディー -->
+    <!-- タイトル -->
+    <?php $k = 8; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <!-- <div class="col-25"> -->
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <!-- </div> -->
+        <!-- <div class="col-75"> -->
+        <input
+        type="number"
+        style="width:5%;"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+        />
+        <!-- </div> -->
+      </div>
+    <?php } ?>
+    <?php $k = 9; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <!-- <div class="col-25"> -->
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <!-- <input type="text" id="fname" onblur="myFunction()"> -->
+        <!-- </div> -->
+        <!-- <div class="col-75"> -->
+        <input type="text" style="width:10%;" name="af:<?php echo needv($k)?>:<?php echo $k?>" value="<?php echo $thisForm->getv($k)?>" id="datetimepicker_regist" class="w50 err-i<?php echo $thisForm->getm($k)?> input" autocomplete="off" onblur="setRegistDate();">
+        <!-- </div> -->
+      </div>
+    <?php } ?>
+    <?php $k = 10; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <!-- <div class="col-25"> -->
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <input
+        type="text"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+        />
+        <!-- </div> -->
+        <!-- <div class="col-75"> -->
+        <!-- <textarea wrap="hard" style="width:600px;" name="af:<?php echo needv($k)?>:<?php echo $k?>" class="err-i<?php echo $thisForm->getm($k)?> textarea ml-15"></textarea> -->
+        <!-- <textarea wrap="hard" style="width:600px;" name="af:<?php echo needv($k)?>:<?php echo $k?>" class="err-i<?php echo $thisForm->getm($k)?> textarea ml-15"><?php echo $thisForm->getv($k)?></textarea> -->
+        <!-- </div> -->
+      </div>
+    <?php } ?>
+    <?php $k = 11; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <!-- <div class="col-25"> -->
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <input
+        type="text"
+        style="width:15%;"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+        />
+      </div>
+    <?php } ?>
+    <!-- ステータス -->
+    <?php $k = 12; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+        <div class="name-container" style="width:220px;">
+          <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+          <?php if (needv($k)) { ?>
+            <div class="required">※必須</div>
+          <?php } ?>
+          <div class="colon">：</div>
+        </div>
+        <input
+        type="text"
+        style="width:15%;"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+        />
+      </div>
+
+    <?php } ?>
+
+    <!-- <?php $k = 13; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+    <div class="name-container" style="width:220px;">
+    <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+    <?php if (needv($k)) { ?>
+    <div class="required">※必須</div>
+  <?php } ?>
+  <div class="colon">：</div>
+</div>
+<input
+type="text"
+style="width:15%;"
+name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+value="<?php echo($thisForm->getv($k)); ?>"
+class="err-i<?php echo($thisForm->getm($k)); ?> input"
+autocomplete="off"
+/>
+</div>
+
+<?php } ?> -->
+
+<!-- 確認ボタン -->
+<div class="a-center pt-80 pb-62">
+  <input
+  class="confirm-btn"
+  type="submit"
+  name="<?php echo($thisForm->get('CONFIRM_NAME')); ?>"
+  value="<?php echo($thisForm->get('CONFIRM_TITLE')); ?>"
+  onclick="removeFileinput()"
+  />
+</div>
+</div>
+</form>
+
+<?php include('caution.html'); ?>
+<script src="<?php echo  $thisPage->shared_path; ?>/js/jquery.datetimepicker.full.js"></script>
+<script type="text/javascript">
+  $('input').inputAutogrow();
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img1 = document.getElementById("blah");
+        img1.style.display = "block";
+        $('#blah').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
+  }
+
+  // $("#datetimepicker_regist").change(function() {
+  //   alert("dsadsa");
+  // });
+
+  $("#imgInp").change(function() {
+    readURL(this);
+  });
+
+  // $('#datetimepicker_regist').datetimepicker();
+  jQuery.datetimepicker.setLocale('de');
+
+  jQuery('#datetimepicker_regist').datetimepicker({
+    i18n:{
+      de:{
+        months:[
+        'Januar','Februar','März','April',
+        'Mai','Juni','Juli','August',
+        'September','Oktober','November','Dezember',
+        ],
+        dayOfWeek:[
+        "So.", "Mo", "Di", "Mi",
+        "Do", "Fr", "Sa.",
+        ]
+      }
+    },
+    timepicker:false,
+    format:'Y-m-d'
+  });
+  // defaultRegistDateDate = "<?php echo $defaultRegistDateDate ?>";
+  // $('#datetimepicker_regist').datetimepicker(
+  // {
+  //   lang:"ja",
+  //   'step':5,
+  //   format:'Y-m-d',
+  //   timepicker:false,
+  //   defaultDate:defaultRegistDateDate,
+  // });
+  // function setRegistDate() {
+  //   datetime = $('#datetimepicker_regist').val();
+  //   // alert(datetime);
+  //   dt = datetime;
+  //   if (dt != "") {
+  //     defaultDate = dt.substr(0,4) + "/" + dt.substr(4,2) + "/" + dt.substr(6,2);
+  //     $('#datetimepicker_regist').datetimepicker("destroy");
+  //     $('#datetimepicker_regist').datetimepicker(
+  //     {
+  //       lang:"ja",
+  //       'step':5,
+  //       format:'Y-m-d',
+  //       timepicker:false,
+  //       defaultDate:defaultDate,
+  //     });
+  //   }
+  // }
+  function removeFileinput(){
+    var frm=document.getElementsByName('<%=$FTAG_NAME%>');
+    var inputs=frm[0].getElementsByTagName("input");
+    for( var i = 0; i < inputs.length; i++ ) {
+      if(inputs.item(i).type=='file'){
+        if(inputs.item(i).value.length < 1){
+          inputs.item(i).parentNode.removeChild(inputs.item(i));
+        }
+      }
+    }
+
+  }
+
+</script>

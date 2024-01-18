@@ -1,0 +1,167 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+<!-- <script src="tzSelect/jquery.tzSelect.js"></script> -->
+<a class="adminOperationBtn return-to-list-btn ml-60" href="<?php echo $thisPage->top_path; ?>/apl_user/">
+  <img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" />
+  <span class="ml-15">一覧に戻る</span>
+</a>
+
+<div class="h-align v-items-center ml-60 mt-36">
+  <div class="form-title-arrow"></div>
+  <div class="form-title">ユーザ管理<?php echo $thisForm->get('FORM_TITLE') ?></div>
+</div>
+
+<?php if (!empty($thisForm->_message)) { ?>
+  <p class="err"><?php echo($thisForm->_message); ?></p>
+<?php } ?>
+<?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+  <form name="<?php echo($FTAG_NAME); ?>" action="./?modify" method="POST" enctype="multipart/form-data">
+<?php } ?>
+<?php if (!isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+<form name="<?php echo($FTAG_NAME); ?>" action="./" method="POST" enctype="multipart/form-data">
+<?php } ?>
+  <input type="hidden" name="mode" value="<?php echo($mode); ?>" />
+  <input type="hidden" name="sid" value="<?php echo($sid); ?>" />
+
+  <div class="item-container mt-34 promomaterial">
+    <!-- タイトル -->
+    <?php $k = 1; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <!-- <div class="col-25"> -->
+      <div class="name-container" style="width:220px;">
+        <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <?php if (needv($k)) { ?>
+        <div class="required">※必須</div>
+        <?php } ?>
+        <div class="colon">：</div>
+      </div>
+      <!-- </div> -->
+      <!-- <div class="col-75"> -->
+      <input
+        type="text"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+      />（半角英数字）
+      <!-- </div> -->
+    </div>
+    <?php } ?>
+    <!-- ボディー -->
+    <?php $k = 2; if (!empty($afconf[$k])) { ?>
+      <div class="item-row">
+      <!-- <div class="col-25"> -->
+      <div class="name-container" style="width:220px;">
+        <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <?php if (needv($k)) { ?>
+        <div class="required">※必須</div>
+        <?php } ?>
+        <div class="colon">：</div>
+        </div>
+       <!-- </div> -->
+       <!-- <div class="col-75"> -->
+        <textarea wrap="hard" style="width:600px;" name="af:<?php echo needv($k)?>:<?php echo $k?>" class="err-i<?php echo $thisForm->getm($k)?> textarea ml-15"></textarea>
+      （8文字～30文字の半角英数字）
+       <!-- </div> -->
+    </div>
+    <?php } ?>
+    <?php $k = 3; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <!-- <div class="col-25"> -->
+      <div class="name-container" style="width:220px;">
+        <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <?php if (needv($k)) { ?>
+        <div class="required">※必須</div>
+        <?php } ?>
+        <div class="colon">：</div>
+      </div>
+      <input
+        type="text"
+        name="af:<?php echo(needv($k)); ?>:<?php echo($k); ?>"
+        value="<?php echo($thisForm->getv($k)); ?>"
+        class="err-i<?php echo($thisForm->getm($k)); ?> input"
+        autocomplete="off"
+      />
+  </div>
+  <?php } ?>
+    <!-- ステータス -->
+    <?php $k = 4; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container" style="width:220px;">
+        <div class="name no-supplement" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <?php if (needv($k)) { ?>
+        <div class="required">※必須</div>
+        <?php } ?>
+        <div class="colon">：</div>
+      </div>
+      <?php foreach($PermissionList as $key => $val){ ?>
+        <input type="radio" name="af:<?php echo needv($k)?>:<?php echo $k?>" id="form<?php echo $k; ?>-<?php echo $key; ?>" <?php echo cbv($k, $key);?>/>
+        <label for="form<?php echo $k; ?>-<?php echo $key; ?>" class="radio"><?php echo $val; ?></label>
+      <?php } ?>
+    </div>
+
+    <?php } ?>
+    <!-- 確認ボタン -->
+    <div class="a-center pt-80 pb-62">
+      <input
+        class="confirm-btn"
+        type="submit"
+        name="<?php echo($thisForm->get('CONFIRM_NAME')); ?>"
+        value="<?php echo($thisForm->get('CONFIRM_TITLE')); ?>"
+        onclick="removeFileinput()"
+      />
+    </div>
+  </div>
+</form>
+
+<?php include('caution.html'); ?>
+
+<!-- <script type="text/javascript">
+	$(document).ready(function() {
+		$(".fancybox").fancybox();
+	});
+</script> -->
+
+<script type="text/javascript">
+//   $(document).ready(function(){
+//
+// 	$('select.makeMeFancy').tzSelect({
+// 		render : function(option){
+// 			return $('<li>',{
+// 				html:	'<img src="'+option.data('icon')+'" width="40px"/><span>'+
+// 						option.data('html-text')+'</span>'
+// 			});
+// 		},
+// 		className : 'hasDetails'
+// 	});
+//
+// });
+//
+//   function ShowLength(str,id,len) {
+// 	strlen = str.length;
+// 	if (strlen > len) {
+// 		strlen = len;
+// 	}
+// 	document.getElementById(id).innerHTML = strlen + "/" + len + "文字";
+// }
+// ShowLength("<?php echo $thisForm->getv(4)?>", 'inputlength', 40);
+function removeFileinput(){
+  //alert('<%=$FTAG_NAME%>');
+  // $mode = $_util->RequestVal('mode','abc');
+  // ret = confirm("Yahoo!Japanへ飛びます。宜しいですか？"+$mode);
+  // if (ret == true){
+  //   location.href = "http://www.yahoo.co.jp/";
+  // }
+  // $mode＝"123"
+	var frm=document.getElementsByName('<%=$FTAG_NAME%>');
+	var inputs=frm[0].getElementsByTagName("input");
+	for( var i = 0; i < inputs.length; i++ ) {
+		if(inputs.item(i).type=='file'){
+			if(inputs.item(i).value.length < 1){
+				inputs.item(i).parentNode.removeChild(inputs.item(i));
+			}
+		}
+	}
+
+}
+
+</script>

@@ -1,0 +1,168 @@
+<?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+  <form action="./?modify" method="post">
+<?php } ?>
+<?php if (!isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+<form action="./" method="post">
+<?php } ?>
+
+  <input type="hidden" name="mode" value="<?php echo($mode); ?>" />
+  <input type="hidden" name="sid" value="<?php echo($sid); ?>" />
+  <input type="hidden" name="<?php echo($r_nm[0]); ?>[0]" value="<?php echo($Fr_prm[0][0]); ?>" />
+  <?php foreach($thisForm->_v as $no => $val) { ?>
+  <input type="hidden" name="<?php echo($no); ?>::<?php echo($no); ?>" value="<?php echo($val); ?>" />
+  <?php } ?>
+
+  <?php if (!isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+    <?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+      <button
+        class="adminOperationBtn return-to-form-btn ml-60 v-items-center"
+        type="submit"
+        name="<?php echo($thisForm->get('MODIFY_NAME')); ?>"
+        value="<?php echo($thisForm->get('MODIFY_TITLE')); ?>"
+      >
+        <img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" />
+        <span class="ml-15">
+          修正する
+        </span>
+      </button>
+    <?php } ?>
+    <?php if (!isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+      <button
+        class="adminOperationBtn return-to-form-btn ml-60 v-items-center"
+        type="submit"
+        name="<?php echo($thisForm->get('FORM_HTML')); ?>"
+        value="<?php echo($thisForm->get('FORM_TITLE')); ?>"
+      >
+        <img class="ml-22 ico-return" src="<?php echo $thisPage->shared_path; ?>/images/arrow_menu_on.svg" alt="" />
+        <span class="ml-15">
+          修正する
+        </span>
+      </button>
+    <?php } ?>
+  <?php } ?>
+  <!-- <?php if (!isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+    <div class="confirm-note ml-60">
+      内容を確認の上、「<?php echo($thisForm->get('FINISH_TITLE')); ?>」ボタンを押してください。
+    </div>
+  <?php } ?> -->
+  <div class="h-align v-items-center ml-60 mt-36">
+    <div class="form-title-arrow"></div>
+    <div class="form-title">お知らせ<?php echo $thisForm->get('FORM_TITLE') ?></div>
+  </div>
+
+  <div class="confirm-note ml-60">
+    内容を確認の上、「<?php echo($thisForm->get('FINISH_TITLE')); ?>」ボタンを押してください。
+  </div>
+
+  <div class="item-container mt-34">
+    <!-- タイトル -->
+    <?php $k = 1; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container">
+        <div class="name" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <div class="colon">：</div>
+      </div>
+      <?php if (isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+      <div class="ml-15"><?php echo(nl2br(explode("/", $thisForm->getv($k))[0])); ?></div>
+      <?php } ?>
+      <?php if (!isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+      <?php if ($k == 5) { ?>
+      <div class="ml-15"><?php echo($_push_notification->_device_type[$thisForm->getv($k)]); ?></div>
+      <?php } ?>
+      <?php if ($k != 5) { ?>
+      <div class="ml-15"><?php echo($_push_notification->_device_type[$thisForm->getv($k)]); ?></div>
+      <?php } ?>
+      <?php } ?>
+    </div>
+    <?php } ?>
+    <!-- タイトル -->
+    <?php $k = 2; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container">
+        <div class="name" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <div class="colon">：</div>
+      </div>
+      <div class="ml-15"><?php echo(nl2br($thisForm->getv($k))); ?></div>
+    </div>
+    <?php } ?>
+    <!-- データ送付 -->
+    <?php $k = 3; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container">
+        <div class="name" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <div class="colon">：</div>
+      </div>
+      <div class="ml-15"><?php echo(nl2br($thisForm->getv($k))); ?></div>
+    </div>
+    <?php } ?>
+    <!-- sds -->
+    <?php $k = 4; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container">
+        <div class="name" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <div class="colon">：</div>
+      </div>
+      <?php if (!isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+        <div class="ml-15">
+          <?php
+          if($thisForm->getv($k) == '0'){
+            echo "即時投稿";
+          }
+          else
+          {
+            if($thisForm->getv($k+2)+1 < '10')
+            {
+              echo($thisForm->getv($k)."-0".($thisForm->getv($k+2))."-".$thisForm->getv($k+3)." ".$thisForm->getv($k+4).":".$thisForm->getv($k+5));
+            }
+            else
+            {
+              echo($thisForm->getv($k)."-".($thisForm->getv($k+2))."-".$thisForm->getv($k+3)." ".$thisForm->getv($k+4).":".$thisForm->getv($k+5));
+            }
+          }
+          ?>
+        </div>
+      <?php } ?>
+      <?php if (isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+        <div class="ml-15"><?php echo($thisForm->getv($k)); ?></div>
+      <?php } ?>
+      <!-- <div class="ml-15"><?php echo($_push_notification->_device_type[$thisForm->getv($k)]."/"); ?></div> -->
+    </div>
+    <?php } ?>
+    <?php $k = 5; if (!empty($afconf[$k])) { ?>
+    <div class="item-row">
+      <div class="name-container">
+        <div class="name" id="err<?php echo($k); ?>"><?php echo($afconf[$k]['title']); ?></div>
+        <div class="colon">：</div>
+      </div>
+      <?php if (!isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+      <div class="ml-15"><?php echo($_push_notification->_cstatus[$thisForm->getv($k)]); ?></div>
+      <?php } ?>
+      <?php if (isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+      <div class="ml-15"><?php echo($_push_notification->_cstatus[$thisForm->getv($k)]); ?></div>
+      <?php } ?>
+      <!-- <?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+        <div class="ml-15"><?php echo($_push_notification->_cstatus[$thisForm->getv($k-1)]); ?></div>
+      <?php } ?> -->
+    </div>
+    <?php } ?>
+
+  </div>
+
+  <!-- 登録ボタン -->
+  <div class="a-center pt-80 pb-62">
+    <input
+      class="register-btn"
+      type="submit"
+      name="<?php echo($thisForm->get('FINISH_NAME')); ?>"
+      value="<?php echo($thisForm->get('FINISH_TITLE')); ?>"
+    />
+    <?php if (isset($_REQUEST[$thisForm->get('DELETE_NAME')])) { ?>
+    <input type="hidden" name="<?php echo($thisForm->get('DELETE_NAME')); ?>" value="1" />
+    <?php } ?>
+    <!-- <?php if (isset($_REQUEST[$thisForm->get('MODIFY_NAME')])) { ?>
+    <input type="hidden" name="<?php echo($thisForm->get('MODIFY_NAME')); ?>" value="1" />
+    <?php } ?> -->
+  </div>
+</form>
+
+<?php include('caution.html'); ?>

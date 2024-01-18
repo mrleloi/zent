@@ -1,0 +1,15 @@
+<div class="adminBtnArea h-align h-align-sb v-items-center fw-wrap">
+<div class="h-align v-items-center">
+<div class="pankz">
+<a href="<?php echo $thisPage->top_path; ?>/">管理画面トップ</a>
+<?php
+if (!empty($PANKZ)) {
+	foreach($PANKZ as $p){
+		print(' ＞ '.$_util->Atag($p['name'],$p['link']));
+	}
+}
+?>
+</div>
+<div class="clear"></div>
+</div>
+</div>

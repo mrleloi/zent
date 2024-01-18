@@ -1,0 +1,11 @@
+<?php
+$pagebutton='<p class="backtop"><a href="#header">△ページトップへ</a></p>';
+?>
+<script>
+    const contentId = "content-main";
+    const contentElem = document.getElementById(contentId);
+    const h = contentElem.scrollHeight;
+    if (h >= 800) {
+        document.write('<?php echo($pagebutton); ?>');
+    }
+</script>

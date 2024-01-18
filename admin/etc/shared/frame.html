@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="<?php echo  $thisPage->shared_path; ?>/css/MultilevelSideNavigation.css"/>
+<link rel="apple-touch-icon" sizes="180x180" href="<?php echo $thisPage->shared_path; ?>/images/apple-touch-icon.png">
+<link rel="manifest" href="<?php echo $thisPage->shared_path; ?>/site.webmanifest">
+<link rel="mask-icon" href="<?php echo $thisPage->shared_path; ?>/images/safari-pinned-tab.svg" color="#ea5e00">
+<link rel="icon" type="image/icon" href="<?php echo $thisPage->shared_path; ?>/images/favicon.ico">
+<meta name="msapplication-TileColor" content="#ea5e00">
+<meta name="theme-color" content="#ffffff">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/jquery.skOuterClick.js"></script>
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/jslb_util.js"></script>
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/fileUpload.js"></script>
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="<?php echo $thisPage->shared_path; ?>/js/jquery-ui.min.js"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="<?php echo $thisPage->shared_path; ?>/css/import.css" type="text/css" media="print,screen" />
+<link rel="stylesheet" href="<?php echo $thisPage->shared_path; ?>/css/jquery.fancybox.min.css" type="text/css" media="print,screen" />
+
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<!-- //hiển thị text khi trình duyệt không sử dụng javascript -->
+<?php echo $thisPage->getAddHeader(); ?>
+<noscript>Requires a javascript capable browser.</noscript>
+<title><?php echo $thisPage->head_title; ?></title>
+</head>
+<body>
+
+<?php if(!empty($thisPage->header_html)){include($thisPage->header_html);} ?>
+<div id="wrapper">
+<div id="container">
+
+<div id="main">
+<div id="content">
+<div id="content-main">
+<!-- //link chỉ rõ địa chỉ link đến. -->
+<?php if(!empty($thisPage->pankz_html)){include($thisPage->pankz_html);} ?>
+<?php include($CONTENT); ?>
+</div>
+</div>
+</div>
+<?php if(!empty($thisPage->menu_html)){include($thisPage->menu_html);} ?>
+</div>
+</div>
+
+<?php if(!empty($thisPage->footer_html)){include($thisPage->footer_html);} ?>
+
+</body>
+</html>
+<script type="text/javascript">
+$('.nav-toggle').click(function(e) {
+
+  e.preventDefault();
+  $("html").toggleClass("openNav");
+  $(".nav-toggle").toggleClass("active");
+
+});
+</script>

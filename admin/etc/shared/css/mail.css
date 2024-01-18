@@ -1,0 +1,452 @@
+@charset "utf-8";
+
+.table-list.mail .text {
+  padding: 0 10px 0 10px;
+}
+
+.table-list.mail td {
+  height: 80px;
+}
+
+.undelivered {
+  width: 80px;
+  height: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-color: rgba(50, 178, 226, 0.2);
+}
+
+.deliverd {
+  width: 80px;
+  height: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-color: rgba(112, 112, 112, 0.2);
+}
+
+.w_100 {
+  width: 100px;
+}
+
+.w_250 {
+  width: 250px;
+}
+
+.w_180 {
+  width: 180px;
+}
+
+.add-size-btn {
+  padding: 0px;
+  width: 280px;
+  height: 46px;
+  text-align: center;
+  line-height: 46px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.mail-detail {
+  padding: 40px 20px;
+  margin-bottom: 60px;
+}
+
+.item-row .name-container {
+  min-width: 165px;
+}
+
+.w_260 {
+  max-width: 260px !important;
+}
+
+.item-row .input,
+.item-row .input.banner-size {
+  max-width: 740px;
+}
+
+.item-row .right-container {
+  margin-left: 25px;
+}
+
+.no-border-row {
+  border-bottom: 0px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+}
+
+.pt-20 {
+  padding-top: 20px;
+}
+
+.border-bottom {
+  border-bottom: 1px;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.tab {
+  width: 80px;
+  height: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-color: rgba(112, 112, 112, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 35px;
+}
+
+.flex-area {
+  display: flex;
+}
+
+.open-btn,
+.access-btn {
+  width: 150px;
+  height: 32px;
+  color: #fff;
+  background: #403e3f;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0px;
+}
+
+.open-btn {
+  margin-right: 30px;
+}
+
+.open-btn img {
+  width: 16px;
+  height: auto;
+  margin-right: 6px;
+}
+
+.access-btn img {
+  width: 18px;
+  height: auto;
+  margin-right: 6px;
+}
+
+.no_open,
+.no_access {
+  background: #e2e2e2;
+  color: #ada29a;
+}
+
+.w_300 {
+  width: 300px;
+}
+
+.w_400 {
+  width: 400px;
+}
+
+.tab-active {
+  background-color: rgba(50, 178, 226, 0.2);
+}
+
+.mr-30 {
+  margin-right: 30px;
+}
+
+.mail-detail .h-align-end {
+  margin-top: -20px;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.item-row .w_140 {
+  width: 140px;
+}
+
+.input {
+  padding: 10px !important;
+}
+
+.err_i {
+  background: #f5ccbb !important;
+}
+
+.text_field {
+  height: 240px !important;
+}
+
+.sub_area {
+  font-size: 20px;
+  font-weight: bold;
+  color: #43425d;
+  margin-left: 60px;
+  margin-right: 60px;
+  margin-bottom: 15px;
+}
+
+.pt_0 {
+  padding-top: 0px !important;
+}
+
+.mt_0 {
+  margin-top: 0px !important;
+}
+
+.searchcondition {
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.searchcondition .input.searchword {
+  max-width: 725px;
+}
+
+.sub_text {
+  font-size: 15px;
+  color: #43425d;
+  margin-bottom: 20px;
+}
+
+.allCheck input[type="checkbox"] {
+  display: none;
+}
+
+.allCheck .check {
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin-bottom: 0px;
+  cursor: pointer;
+  color: #4d4f5c;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.allCheck #allCheck + .check,
+.check_area {
+  font-weight: normal;
+}
+
+.allCheck .check:after {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%); /* Safari用 */
+  transform: translate(-50%, -50%);
+  background: #fff;
+  width: 21px;
+  height: 21px;
+  border: 1px solid #707070;
+  content: "";
+}
+
+.allCheck .check:before {
+  position: absolute;
+  top: -9px;
+  left: -4px;
+  display: block;
+  width: 9px;
+  height: 14px;
+  border-right: 3px solid #707070;
+  border-bottom: 3px solid #707070;
+  content: "";
+  opacity: 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  z-index: 100;
+}
+
+.allCheck.searchcondition .check {
+  padding: 12px 12px 11px 46px;
+  margin-bottom: 0px;
+}
+
+.allCheck.searchcondition .check::after {
+  margin-top: -11px;
+  width: 23px;
+  height: 23px;
+}
+
+.allCheck.searchcondition .check::before {
+  left: 22px;
+  margin-top: -7px;
+  width: 8px;
+  height: 12px;
+}
+
+.allCheck input[type="checkbox"]:checked + .check:before {
+  opacity: 1;
+}
+
+.pt-60 {
+  padding-top: 60px;
+}
+
+.pb-80 {
+  padding-bottom: 80px;
+}
+
+.table-wrapper {
+  margin-bottom: 60px;
+}
+
+.mail-edit-btn {
+  width: 220px;
+  height: 46px;
+  background-color: #fbdfcc;
+  border: solid 2px #403e3f;
+  border-radius: 23px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #403e3f !important;
+  text-decoration: none !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.mail-delete-btn {
+  width: 160px;
+  background-color: #e2e2e2;
+  border: solid 2px #c0b8b0;
+  color: #827a7a !important;
+}
+
+.item-container {
+  margin-left: 60px;
+  margin-right: 60px;
+  box-shadow: none;
+}
+
+.scroll_table thead {
+  display: block;
+}
+
+.scroll_table tbody {
+  display: block;
+  overflow-y: scroll;
+  height: 820px;
+}
+
+.scroll_table td:nth-child(1),
+.scroll_table th:nth-child(1) {
+  min-width: 150px;
+}
+
+.scroll_table td:nth-child(2),
+.scroll_table th:nth-child(2) {
+  min-width: 150px;
+}
+
+.scroll_table td:nth-child(3),
+.scroll_table th:nth-child(3) {
+  width: 99999px;
+}
+
+.scroll_table td:nth-child(4),
+.scroll_table th:nth-child(4) {
+  min-width: 350px;
+}
+
+.ico_add span {
+  height: 42px;
+}
+
+.item-row .access_input {
+  width: 450px;
+}
+
+.item-row .name-container {
+  min-width: 195px;
+  width: 195px;
+}
+
+.insert_access_analysis {
+  width: 90px;
+  margin-left: 15px;
+  height: 32px;
+  background-color: #fff;
+  border: solid 2px #403e3f;
+  border-radius: 16px;
+  padding: 7px 26px 5px 27px;
+  font-size: 13px;
+  font-weight: bold;
+  box-sizing: border-box;
+  color: #403e3f;
+  cursor: pointer;
+  margin-bottom: 0px;
+  outline: none !important;
+}
+
+.hatena_button {
+  background-color: #aaaaaa;
+  color: #fff;
+  border-radius: 100%;
+  margin-left: 15px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  border: #aaa;
+  font-weight: bold;
+  outline: none !important;
+}
+
+.message_relative {
+  position: relative;
+}
+
+.help_message {
+  width: 200px;
+  display: none;
+  position: absolute;
+  word-wrap: break-word;
+  margin-top: -2.5em;
+  border: 2px solid #aaaaaa;
+  padding: 4px;
+  left: 55px;
+  top: 5px;
+}
+
+.help_message:after {
+  border: 10px solid transparent;
+  border-right-color: #aaaaaa;
+  border-left-width: 0;
+  width: 0;
+  left: -10px;
+  content: "";
+  display: block;
+  top: 15px;
+  position: absolute;
+  margin-top: 1em;
+}
+
+.item-wrap {
+  flex-wrap: wrap;
+}
+
+.flex_sub {
+  margin-left: 15px;
+  margin-top: 10px;
+}
+
+.item-row .name-container {
+  flex-basis: 195px;
+}
+
+.table-list textarea.input,
+.item-row textarea.input {
+  margin-right: 150px;
+}
